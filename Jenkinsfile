@@ -17,6 +17,7 @@ pipeline {
             }
             steps {
                 sh '''
+                    echo 'Validating the polling in Jenkins'
                     ls -la
                     node --version
                     npm --version
