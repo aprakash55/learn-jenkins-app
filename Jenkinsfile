@@ -126,6 +126,11 @@ pipeline {
                         }
                     }
 
+                    environment {
+                        CI_ENVIRONMENT_URL = 'https://fascinating-creponne-220960.netlify.app'
+                    }
+
+
                     steps {
                         sh '''
                             node --version
@@ -138,10 +143,7 @@ pipeline {
                         '''
                     }
 
-                    environment {
-                        CI_ENVIRONMENT_URL = 'https://fascinating-creponne-220960.netlify.app'
-                    }
-
+                    
                     post {
                         always {
                             publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'playwright-report', reportFiles: 'index.html', reportName: 'Prod E2E', reportTitles: '', useWrapperFileDirectly: true])
