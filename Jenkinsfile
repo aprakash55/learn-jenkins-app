@@ -8,6 +8,19 @@ pipeline {
 
     stages {
 
+        stage('AWS') {
+            agent { 
+                docker {
+                    image 'amazon/aws-cli'
+                }
+            }
+            steps {
+                sh '''
+                    echo "Testing AWS CLI in Jenkins"
+                    aws --version
+                '''
+            }
+        }
 
         stage('Build') {
             agent {
