@@ -16,10 +16,13 @@ pipeline {
                 }
             }
             steps {
-                sh '''
-                    echo "Testing AWS CLI in Jenkins"
-                    aws --version
-                '''
+                withCredentials([usernamePassword(credentialsId: 'my-aws-arjun', passwordVariable: 'AWS_SECRET_ACCESS_KEY', usernameVariable: 'AWS_ACCESS_KEY_ID')]) {
+                    sh '''
+                        echo "Testing AWS CLI in Jenkins"
+                        aws s3 ls
+                    '''
+                    }
+                
             }
         }
 
