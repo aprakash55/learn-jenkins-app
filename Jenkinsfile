@@ -20,7 +20,8 @@ pipeline {
                     sh '''
                         echo "Testing AWS CLI in Jenkins"
                         aws --version
-                        aws s3 ls
+                        echo "Hello S3" > test.txt
+                        aws s3 cp test.txt s3://arjun-aws03162026/test.txt
                     '''
                     }
                 
